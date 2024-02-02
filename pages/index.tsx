@@ -5,6 +5,7 @@ import { app, auth, db } from "@/firebase";
 import { AuthContext } from "@/context/AuthContext";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/router";
+import SetupAccount from "@/components/SetupAccount";
 
 export default function App() {
   const { user, userLoading } = useContext(AuthContext);
@@ -30,6 +31,8 @@ export default function App() {
   const show = async () => {
     console.log(user);
   };
+
+  if (!userLoading && !user?.setup) return <SetupAccount />;
 
   return (
     <div className="">
