@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function GoogleButton({ onClick }: { onClick: any }) {
+export default function GoogleButton({ onClick, text }: { onClick: any, text?: string }) {
   return (
     <button
       onClick={onClick}
@@ -61,7 +61,9 @@ export default function GoogleButton({ onClick }: { onClick: any }) {
           </g>{" "}
         </g>{" "}
       </svg>
-      <span>Continue with Google</span>
+      <span>
+        {text ? text : 'Continue with Google' }
+      </span>
     </button>
   );
 }
