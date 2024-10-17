@@ -1,5 +1,5 @@
 import { AuthContext } from "@/context/AuthContext";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Navbar from "./Navbar";
 import { useRouter } from "next/router";
 
