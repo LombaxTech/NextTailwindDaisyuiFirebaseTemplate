@@ -12,7 +12,7 @@ export default function Layout({ children }: { children: any }) {
     if (!userLoading && !user && !router.isReady) return;
     
     let { pathname } = router;
-    if (!user && pathname !== "/signin" && pathname !== "/signup") {
+    if (!userLoading && !user && pathname !== "/signin" && pathname !== "/signup") {
       router.push("/signin");
     }
   
