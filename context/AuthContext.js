@@ -26,7 +26,7 @@ export const AuthProvider = ({ children }) => {
         onSnapshot(userRef, (snapshot) => {
           // USER EXISTS IN FIRESTORE
           if (snapshot.exists()) {
-            setUser({ ...authUser, ...userSnapshot.data() });
+            setUser({ ...authUser, ...snapshot.data() });
             setUserLoading(false);
           } 
 
