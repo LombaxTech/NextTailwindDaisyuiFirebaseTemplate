@@ -9,10 +9,10 @@ export default function Layout({ children }: { children: any }) {
   const router = useRouter();
 
   useEffect(() => {
-    if (!userLoading && !user && router.isReady) return;
+    if (!userLoading && !user && !router.isReady) return;
     
     let { pathname } = router;
-    if (pathname !== "/signin" && pathname !== "/signup") {
+    if (!user && pathname !== "/signin" && pathname !== "/signup") {
       router.push("/signin");
     }
   
