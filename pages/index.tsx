@@ -2,7 +2,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { useContext } from "react";
 
 import { AuthContext } from "@/context/AuthContext";
-import { db } from "@/firebase";
+import { db } from "@/lib/firebase";
 
 export default function App() {
   const { user, userLoading } = useContext(AuthContext);
