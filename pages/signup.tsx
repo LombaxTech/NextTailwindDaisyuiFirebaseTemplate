@@ -1,9 +1,10 @@
-import { auth } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
 import {
   createUserWithEmailAndPassword,
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -37,6 +38,12 @@ export default function SignIn() {
         email,
         password
       );
+
+      await setDoc(doc(db, "users", userCred.user.uid), {
+        email,
+        createdAt: new Date(),
+      });
+
       router.push("/");
     } catch (error: any) {
       console.log(error);
