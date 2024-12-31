@@ -1,4 +1,4 @@
-import { app, db } from "@/firebase";
+import { app, db } from "@/lib/firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { doc, onSnapshot } from "firebase/firestore";
 import { useState, useEffect, createContext } from "react";
@@ -19,16 +19,14 @@ export const AuthProvider = ({ children }) => {
         setUserLoading(false);
         setUser(null);
       }
-      
       if (authUser) {
         const userRef = doc(db, "users", authUser.uid);
-        
         onSnapshot(userRef, (snapshot) => {
           // USER EXISTS IN FIRESTORE
           if (snapshot.exists()) {
             setUser({ ...authUser, ...snapshot.data() });
             setUserLoading(false);
-          } 
+          }
 
           // USER DOES NOT EXIST IN FIRESTORE
           if (!snapshot.exists()) {
@@ -36,7 +34,7 @@ export const AuthProvider = ({ children }) => {
             setUserLoading(false);
           }
         });
-      } 
+      }
     });
   }, []);
 

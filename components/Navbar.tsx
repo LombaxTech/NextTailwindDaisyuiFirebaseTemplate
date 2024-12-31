@@ -1,5 +1,5 @@
 import { AuthContext } from "@/context/AuthContext";
-import { auth } from "@/firebase";
+import { auth } from "@/lib/firebase";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import Link from "next/link";
 import { useRouter } from "next/router";
